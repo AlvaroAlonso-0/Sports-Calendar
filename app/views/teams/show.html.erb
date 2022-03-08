@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @team %>
+<h1><%= @team.name %></h1>
+<div>
+    <h2><%= @team.city %></h2>
+    <p>Description: <%= @team.description %><br></p>
+
+  <%= link_to "Edit", edit_team_path(@team) %> |
+  <%= link_to "Back", teams_path %>
+  <br>
+</div>

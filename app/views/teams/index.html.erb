@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Teams</h1>
+
+<div id="teams">
+  <% @teams.each do |team| %>
+    <%= render team %>
+    <p>
+    <h3><%= team.name %></h3>
+    <div class="d-flex align-items-center">
+      <%= link_to "Show", team%> 
+      <%= link_to "Edit", edit_team_path(team)%> <%= button_to "Destroy", @team, method: :delete %>
+    </div>
+    </p><br>
+  <% end %>
+</div>
+
+<%= link_to "New team", new_team_path %>
