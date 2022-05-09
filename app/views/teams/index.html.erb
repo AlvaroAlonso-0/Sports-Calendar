@@ -6,12 +6,13 @@
   <% @teams.each do |team| %>
     <%= render team %>
     <p>
-    <h3><%= team.name %></h3>
-    <div class="d-flex align-items-center">
-      <%= link_to "Show", team%> 
-      <%= link_to "Edit", edit_team_path(team)%> <%= button_to "Destroy", @team, method: :delete %>
-    </div>
-    </p><br>
+      <div>
+      <%= team.name %><span style="padding-left:2em"></span>
+        <%= link_to 'Show', team %>
+        <%= link_to 'Edit', edit_team_path(team) %>
+        <%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </p> 
   <% end %>
 </div>
 

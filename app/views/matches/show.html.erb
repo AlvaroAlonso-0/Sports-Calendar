@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<!--- Show match details --->
+<%= render @match %> 
+</div>
+  <div class="match-details">
+    <h2 class="match-details-homename-vs-awayname">
+      <%= render @home_team %>
+      <%= render @away_team %>
+      <%= @home_team.name %> vs <%= @away_team.name %>  
+    </h2>
+    <div class="match-details-time">
+      <h3>Time</h3>
+      <%= @match.time %>
+    </div>
+    <div class="match-details-location">
+      <h3>Location</h3>
+      <%= @match.location %>
+    </div>
+    <div class="match-details-description">
+      <h3>Description</h3>
+      <%= @match.description %>
+    </div>
+    </br>
+    <div class="match-details-edit">
+      <%= link_to 'Edit', edit_match_path(@match) %> |
+      <%= link_to 'Back', matches_path %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[ show edit update destroy ]
+  add_flash_types :error_name, :error_city
 
   # GET /teams or /teams.json
   def index
@@ -24,15 +25,23 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
 
-    respond_to do |format|
+    if @team.name.blank? || @team.city.blank?
+      if @team.name.blank?
+        @team.errors.add(:name, "can't be blank")
+      end
+      if @team.city.blank?
+        @team.errors.add(:city, "can't be blank")
+      end  
+    else
       if @team.save
-        format.html { redirect_to team_url(@team), notice: "Team was successfully created." }
-        format.json { render :show, status: :created, location: @team }
+        flash[:notice] = "Team was successfully created"
+        redirect_to @team
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        render :new
       end
     end
+
+    
   end
 
   # PATCH/PUT /teams/1 or /teams/1.json

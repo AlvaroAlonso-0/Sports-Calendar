@@ -1,4 +1,23 @@
 <%= form_with(model: team) do |form| %>
+  <div>
+    <div class="form-name">
+      <%= form.label :name %><br>
+      <%= form.text_field :name%><br>
+    </div>
+
+    <div class="form-city">
+      <%= form.label :city %><br>
+      <%= form.text_field :city %><br>
+    </div>
+
+    <div class="form-description">
+      <%= form.label :description %><br>
+      <%= form.text_area :description %><br>
+    </div>
+    
+    <%= form.submit %>
+  </div>
+
   <% if team.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
@@ -10,17 +29,4 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %><br>
-    
-    <%= form.label :city %><br>
-    <%= form.text_field :city %><br>
-
-    <%= form.label :description %><br>
-    <%= form.text_area :description %><br>
-
-    <%= form.submit %>
-  </div>
 <% end %>
